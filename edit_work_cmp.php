@@ -1,0 +1,57 @@
+<?php
+
+    if(isset($_POST['work_id']) && isset($_POST['work_term']) && isset($_POST['work_name']) && isset($_POST['work_location']) && isset($_POST['lec_fullname']) && isset($_POST['work_hour']) && isset($_POST['work_detail']))
+    {
+
+    require_once 'connect.php';
+   
+    $work_id = $_POST['work_id'];
+    $work_term = $_POST['work_term'];
+    $work_name = $_POST['work_name'];
+    $work_location = $_POST['work_location'];
+    $lec_fullname = $_POST['lec_fullname'];
+    $work_hour = $_POST['work_hour'];
+    $work_detail = $_POST['work_detail'];
+
+    $stmt = $conn->prepare("UPDATE work_tb SET work_name=:work_name,lec_fullname=:lec_fullname,work_term=:work_term, work_location=:work_location, work_hour=:work_hour,work_detail=:work_detail WHERE work_id=:work_id");
+
+    $stmt->bindParam(':work_id', $work_id, PDO::PARAM_STR);
+    $stmt->bindParam(':work_term', $work_term, PDO::PARAM_STR);
+    $stmt->bindParam(':work_name', $work_name, PDO::PARAM_STR);
+    $stmt->bindParam(':work_location', $work_location, PDO::PARAM_STR);
+    $stmt->bindParam(':lec_fullname', $lec_fullname, PDO::PARAM_STR);
+    $stmt->bindParam(':work_hour', $work_hour, PDO::PARAM_STR);
+    $stmt->bindParam(':work_detail', $work_detail, PDO::PARAM_STR);
+    $stmt->execute();
+
+    echo '
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">';
+
+    if($stmt->rowCount() > 0){
+      echo '<script>
+          setTimeout(function() {
+          swal({
+              title: "แก้ไขข้อมูลสำเร็จ",
+              type: "success"
+          }, function() {
+              window.location = "view_work.php"; //หน้าที่ต้องการให้กระโดดไป
+          });
+          }, 1000);
+      </script>';
+  }else{
+  echo '<script>
+          setTimeout(function() {
+          swal({
+              title: "เกิดข้อผิดพลาด",
+              type: "error"
+          }, function() {
+              window.location = "view_work.php"; //หน้าที่ต้องการให้กระโดดไป
+          });
+          }, 1000);
+      </script>';
+  }
+$conn = null;
+}
+?>
