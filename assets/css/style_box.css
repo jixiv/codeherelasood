@@ -1,0 +1,114 @@
+
+
+.container-fluid  {
+    position: relative;
+    max-width: 100%;
+    display: grid;
+    /*border: 10px solid red;*/
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: minmax(100px, auto);
+    margin: 0px;
+    grid-auto-flow: dense;
+    grid-gap: 10px;
+}
+
+.container-fluid .box {   
+    background: #333;
+    padding: 20px;
+    display: grid;
+    font-size: 22px;
+    place-items: center;
+    text-align: center;
+    color: #fff;
+    transition: 0.4s;
+}
+
+.container-fluid .box:hover {  
+    background: #333;
+}
+
+.container-fluid .box img {  
+    position: relative;
+    max-width: 120px;
+    margin-bottom: 5px;
+}
+
+.container-fluid .box:nth-child(1) {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.container-fluid .box:nth-child(2) {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.container-fluid .box:nth-child(3) {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.container-fluid .box:nth-child(4) {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.container-fluid .box:nth-child(5) {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.container-fluid .box:nth-child(6) {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.container-fluid .box:nth-child(7) {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  
+.container-fluid .box:nth-child(8) {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  
+
+
+
+--------------------------------------------------------------------------------
+
+@media (min-width: 1440px)  {
+    .container-fluid  {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-rows: minmax(auto, auto);
+    }
+}
+@media (min-width: 1366px){
+
+    .container-fluid  {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-rows: minmax(auto, auto);
+    }
+}
+
+
+
+
+
+
+
+------------------------------------------------------------------------
+/*
+@media (max-width: 991px) {
+    .container-fluid {
+        grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
+        grid-template-rows: minmax(auto, auto);
+    }
+
+    .container-fluid .box {
+        grid-column: unset !important;
+        grid-row: unset !important;
+    }
+}
+*/
